@@ -36,7 +36,19 @@ function mergeSort(arr){
         }
         return sortedArr;
 }
-
+function buildTree(arr){
+    let Tree = (function sortedArrtoBST(noDuplicateArr){
+        let start = 0;
+        let end = noDuplicateArr.length - 1;
+        if(start>end) return null;
+        let mid = parseInt((start+end)/2);
+        let root = Node(noDuplicateArr[mid]);
+        root.left = sortedArrtoBST(noDuplicateArr.slice(start,mid));
+        root.right = sortedArrtoBST(noDuplicateArr.slice(mid+1));   
+        return root;
+    })(arr)
+    return Tree;
+}
 }
 function Tree(arr){
     sortedArr = mergeSort(arr);
